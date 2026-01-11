@@ -3,3 +3,5 @@ dist/
 .env
 .vscode/
 .DS_Store
+.firebase/
+public/
