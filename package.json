@@ -1,6 +1,7 @@
 {
   "name": "serverless-recipe-book",
   "version": "0.1.0",
+  "homepage": "https://reyxdz.github.io/Serverless-Recipe-Book/",
   "private": true,
   "scripts": {
     "dev": "vite",
