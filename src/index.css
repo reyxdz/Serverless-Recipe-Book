@@ -1,0 +1,44 @@
+:root{
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #10b981;
+  --radius: 10px;
+  --max-width: 1100px;
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%;}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:var(--bg);
+  color:#111827;
+}
+.app-root{max-width:var(--max-width);margin:24px auto;padding:16px}
+.header{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.header h1{margin:0;font-size:1.25rem}
+.search input{padding:8px 12px;border-radius:8px;border:1px solid #e5e7eb}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border-radius:var(--radius);padding:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+.card h3{margin:8px 0 4px;font-size:1rem}
+.favorite-btn{background:transparent;border:0;cursor:pointer;font-size:1.1rem}
+.loading{padding:32px;text-align:center;color:var(--muted)}
+.favorites-summary{font-size:0.9rem;color:var(--muted)}
+/* layout columns */
+.content{display:grid;grid-template-columns:260px 1fr;gap:16px}
+.left-col{min-width:0}
+.main-col{min-width:0}
+
+.filters-toggle{display:inline-block;padding:6px 10px;border-radius:8px;background:#eef2ff;border:1px solid #e0e7ff}
+
+@media (max-width:600px){.header{flex-direction:column;align-items:flex-start}.app-root{margin:12px}}
+/* Responsive: stack filters above content and hide filters by default on small screens */
+@media (max-width:800px){
+  .content{grid-template-columns:1fr}
+  .left-col{order:0}
+  .main-col{order:1}
+  /* hide filters by default; toggled by adding .filters-visible on .content */
+  .left-col aside{display:none}
+  .content.filters-visible .left-col aside{display:block}
+}
