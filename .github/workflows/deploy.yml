@@ -7,10 +7,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     
     steps:
     - uses: actions/checkout@v4
@@ -28,8 +24,10 @@ jobs:
       run: npm run build
     
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        cname: false
+        path: ./dist
+    
+    - name: Deploy artifact to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
