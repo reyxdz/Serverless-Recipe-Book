@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Firebase Hosting
 
 on:
   push:
@@ -23,11 +23,10 @@ jobs:
     - name: Build
       run: npm run build
     
-    - name: Deploy to GitHub Pages
-      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to Firebase
+      uses: FirebaseExtended/action-hosting-deploy@v0
       with:
-        path: ./dist
-    
-    - name: Deploy artifact to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        channelId: live
+        projectId: serverless-recipe-book

@@ -1,14 +1,13 @@
 {
   "name": "serverless-recipe-book",
   "version": "0.1.0",
-  "homepage": "https://reyxdz.github.io/Serverless-Recipe-Book/",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "start": "npm run dev",
-    "deploy": "echo 'See README for deployment steps'"
+    "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,6 +15,7 @@
   },
   "devDependencies": {
     "vite": "^5.0.0",
-    "@vitejs/plugin-react": "^4.0.0"
+    "@vitejs/plugin-react": "^4.0.0",
+    "firebase-tools": "^13.0.0"
   }
 }
